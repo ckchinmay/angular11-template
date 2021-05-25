@@ -1,0 +1,39 @@
+<app-head title="Posts"></app-head>
+<div class="nav">
+    <li class="nav-item">
+        <a routerLink="/posts/add" class="nav-link" routerLinkActive="active">Add
+            <fa-icon [icon]='["fas", "plus"]'></fa-icon>
+        </a>
+    </li>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Body</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let post of posts">
+            <td>
+                <ngb-highlight [result]="post.title"></ngb-highlight>
+            </td>
+            <td>
+                <ngb-highlight [result]="post.body"></ngb-highlight>
+            </td>
+            <td>
+                <button (click)="confirmDeletePost(post.id)" class="btn btn-danger">
+                    <fa-icon [icon]='["fas", "trash"]'></fa-icon>
+                </button>
+                <button (click)="updatePost(post.id)" class="btn btn-info" style="margin-left: 10px">
+                    <fa-icon [icon]='["fas", "edit"]'></fa-icon>
+                </button>
+                <button (click)="postDetails(post.id)" class="btn btn-info" style="margin-left: 10px">
+                    <fa-icon [icon]='["fas", "info"]'></fa-icon>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

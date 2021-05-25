@@ -1,0 +1,115 @@
+<div class="container">
+    <div class="row pt-2">
+        <div class="col-sm-10 col-md-6 mx-auto">
+            <div class="card border-warning mt-5 mb-3">
+                <div class="card-header">
+                    <h3 class="text-center text-warning font-weight-light my-4">Create Account</h3>
+                </div>
+                <div class="card-body">
+                    <form class="form" novalidate [formGroup]="signUpForm" (submit)="signUp()">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="small mb-1" for="inputFirstName">
+                                        First Name*
+                                    </label>
+                                    <input class="form-control" id="inputFirstName" type="text" formControlName="fname"
+                                        placeholder="Enter first name" />
+                                    <ng-container *ngFor="let error of error_messages.fname">
+                                        <span class="text-danger" *ngIf="signUpForm.get('fname').hasError(error.type) && 
+                                            (signUpForm.get('fname').dirty || signUpForm.get('fname').touched)">
+                                            {{error.message}}
+                                        </span>
+                                    </ng-container>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="small mb-1" for="inputLastName">
+                                        Last Name*
+                                    </label>
+                                    <input class="form-control" id="inputLastName" type="text" formControlName="lname"
+                                        placeholder="Enter last name" />
+                                    <ng-container *ngFor="let error of error_messages.lname">
+                                        <span class="text-danger" *ngIf="signUpForm.get('lname').hasError(error.type) && 
+                                                (signUpForm.get('lname').dirty || signUpForm.get('lname').touched)">
+                                            {{error.message}}
+                                        </span>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="small mb-1" for="inputEmailAddress">
+                                Email*
+                            </label>
+                            <input class="form-control" id="inputEmailAddress" type="email" formControlName="email"
+                                aria-describedby="emailHelp" placeholder="Enter email address" />
+                            <ng-container *ngFor="let error of error_messages.email">
+                                <span class="text-danger" *ngIf="signUpForm.get('email').hasError(error.type) && 
+                                        (signUpForm.get('email').dirty || signUpForm.get('email').touched)">
+                                    {{error.message}}
+                                </span>
+                            </ng-container>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="small mb-1" for="inputPassword">
+                                        Password
+                                    </label>
+                                    <input class="form-control" formControlName="password" id="inputPassword"
+                                        type="password" placeholder="Enter password" />
+                                    <ng-container *ngFor="let error of error_messages.password">
+                                        <span class="text-danger"
+                                            *ngIf="signUpForm.get('password').hasError(error.type) && 
+                                                (signUpForm.get('password').dirty || signUpForm.get('password').touched)">
+                                            {{error.message}}
+                                        </span>
+                                    </ng-container>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="small mb-1" for="inputConfirmPassword">
+                                        Confirm Password
+                                    </label>
+                                    <input class="form-control" id="inputConfirmPassword"
+                                        formControlName="confirmPassword" type="password"
+                                        placeholder="Confirm password" />
+                                    <ng-container *ngFor="let error of error_messages.confirmPassword">
+                                        <span class="text-danger"
+                                            *ngIf="signUpForm.get('confirmPassword').hasError(error.type) && 
+                                                (signUpForm.get('confirmPassword').dirty || signUpForm.get('confirmPassword').touched)">
+                                            {{error.message}}
+                                        </span>
+                                    </ng-container>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <span class="text-danger"
+                                    *ngIf="signUpForm.errors && signUpForm.errors.passwordNotMatch">
+                                    Password & Confirm Password doesn't match
+                                </span>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-block btn-warning" [disabled]="signUpForm.invalid">
+                            <fa-icon *ngIf="loading" class="fa-spin" [icon]='["fas", "spinner"]'></fa-icon>
+                            Sign Up
+                        </button>
+                    </form>
+                </div>
+
+                <div class="card-footer text-center">
+                    <div class="small">
+                        <a routerLink="/auth/login">Have an account? Go to login
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

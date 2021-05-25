@@ -1,0 +1,37 @@
+<span [ngClass]='{"app-nav-fixed": !static}'>
+    <nav class="app-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" routerLink="/dashboard">MyApp</a>
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0">
+            <div>
+                <a routerLink="/auth/login">LogIn</a>
+                &nbsp;&nbsp;
+                <a routerLink="/auth/register">Register</a>
+            </div>
+        </ul>
+    </nav>
+    <div>
+        <div>
+            <main>
+                <app-breadcrumbs *ngIf="!hideBreadcrumbs"></app-breadcrumbs>
+                <div class="container-fluid">
+                    <router-outlet></router-outlet>
+                </div><!-- /.container-fluid -->
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; MyApp 2020</div>
+                        <div>
+                            <a routerLink="/policies/privacy">Privacy Policy</a>
+                            &nbsp;&nbsp;
+                            <a routerLink="/policies/terms">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</span>

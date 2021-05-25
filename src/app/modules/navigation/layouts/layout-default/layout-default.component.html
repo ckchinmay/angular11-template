@@ -1,0 +1,32 @@
+<span [ngClass]='{"app-nav-fixed": !static}'>
+  <app-top-nav></app-top-nav>
+  <div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+      <app-side-nav *ngIf="!sideNavHidden" [sidenavStyle]="sidenavStyle" [sideNavItems]="sideNavItems"
+        [sideNavSections]="sideNavSections">
+      </app-side-nav>
+      <app-side-nav-min *ngIf="sideNavHidden" [sidenavStyle]="sidenavStyle" [sideNavItems]="sideNavItems"
+        [sideNavSections]="sideNavSections">
+      </app-side-nav-min>
+    </div>
+    <session-expiration-alert [startTimer]="true" [alertAt]="1*60"></session-expiration-alert>
+
+    <div id="layoutSidenav_content">
+      <main>
+        <app-confirm-box></app-confirm-box>
+
+        <div class="container-fluid">
+          <app-breadcrumbs *ngIf="!hideBreadcrumbs"></app-breadcrumbs>
+          <!-- loader -->
+          <ng-http-loader [backdrop]="true" [backgroundColor]="'#ff0000'" [extraDuration]="300" [minDuration]="300"
+            [opacity]=".6" spinner="sk-double-bounce">
+          </ng-http-loader>
+          <router-outlet></router-outlet>
+
+        </div><!-- /.container-fluid -->
+      </main>
+
+    </div>
+  </div>
+  <app-footer></app-footer>
+</span>

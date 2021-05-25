@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row pt-2">
+        <div class="col-sm-10 col-md-6 mx-auto">
+            <div class="card border-warning mt-5">
+                <div class="card-header">
+                    <h3 class="text-center text-warning font-weight-light my-4">Login</h3>
+                </div>
+                <div class="card-body">
+                    <form class="form" novalidate [formGroup]="signInForm" (submit)="signIn()">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" formControlName="email" required>
+                            <span class="text-danger"
+                                *ngIf="!signInForm.controls['email'].valid && signInForm.controls['email'].dirty && signInForm.controls['email'].errors.required">
+                                Email is required
+                            </span>
+                            <span class="text-danger"
+                                *ngIf="!signInForm.controls['email'].valid && signInForm.controls['email'].dirty && signInForm.controls['email'].errors.email">
+                                Email is not correct
+                            </span>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" formControlName="password">
+                            <span class="text-danger"
+                                *ngIf="!signInForm.controls['password'].valid && signInForm.controls['password'].dirty && signInForm.controls['password'].errors.required">
+                                Password is required
+                            </span>
+                            <span class="text-danger" text=""
+                                *ngIf="!signInForm.controls['password'].valid && signInForm.controls['password'].dirty && signInForm.controls['password'].errors.minlength">
+                                Min length is 8
+                            </span>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" id="rememberPasswordCheck" type="checkbox"
+                                    formControlName="rememberMe" />
+                                <label class="custom-control-label" for="rememberPasswordCheck">Remember
+                                    password</label>
+                            </div>
+                        </div>
+                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                            <a class="small" routerLink="/auth/forgot-password">Forgot Password?</a>
+                            <button type="submit" class="btn btn-warning" [disabled]="signInForm.invalid">
+                                <fa-icon *ngIf="loading" class="fa-spin" [icon]='["fas", "spinner"]'></fa-icon>
+                                Sign In
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <div class="small"><a routerLink="/auth/register">Need an account? Sign up!</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

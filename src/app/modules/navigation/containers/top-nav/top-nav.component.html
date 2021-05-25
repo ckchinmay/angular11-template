@@ -1,0 +1,11 @@
+<nav class="app-topnav navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" routerLink="/dashboard">MyApp</a>
+    <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" data-cy="topNavToggleSideNav"
+        (click)="toggleSideNav()">
+        <fa-icon [icon]='["fas", "bars"]'></fa-icon>
+    </button>
+    <ul class="navbar-nav ms-auto me-4">
+        <app-top-nav-user></app-top-nav-user>
+    </ul>
+
+</nav>

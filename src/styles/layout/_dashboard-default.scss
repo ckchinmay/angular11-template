@@ -1,0 +1,80 @@
+@include media-breakpoint-up(xs) {
+  #layoutSidenav {
+    display: flex;
+
+    #layoutSidenav_nav {
+      display: none;
+    }
+
+    #layoutSidenav_content {
+      position       : relative;
+      display        : flex;
+      flex-direction : column;
+      justify-content: space-between;
+      min-width      : 0;
+      flex-grow      : 1;
+      min-height     : calc(100vh - #{$topnav-base-height});
+      margin-left    : 0;
+    }
+  }
+
+
+  .app-sidenav-min {
+    #layoutSidenav {
+
+      #layoutSidenav_nav {
+        display    : flex;
+        flex-basis : $sidenav-min-base-width;
+        flex-shrink: 0;
+        transition : transform 0.15s ease-in-out;
+        z-index    : $zindex-sidenav;
+        transform  : translateX(0);
+      }
+
+      #layoutSidenav_content {
+        min-height : calc(100vh - #{$topnav-base-height});
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  #layoutSidenav {
+    display: flex;
+
+    #layoutSidenav_nav {
+      display    : block;
+      flex-basis : $sidenav-base-width;
+      flex-shrink: 0;
+      transition : transform 0.15s ease-in-out;
+      z-index    : $zindex-sidenav;
+      transform  : translateX(0);
+    }
+
+    #layoutSidenav_content {
+      position       : relative;
+      display        : flex;
+      flex-direction : column;
+      justify-content: space-between;
+      min-width      : 0;
+      flex-grow      : 1;
+      min-height     : calc(100vh - #{$topnav-base-height});
+      margin-left    : 0;
+    }
+  }
+
+  .app-sidenav-min {
+    #layoutSidenav {
+
+      #layoutSidenav_nav {
+        flex-basis: $sidenav-min-base-width !important;
+      }
+
+      #layoutSidenav_content {
+        min-height : calc(100vh - #{$topnav-base-height}) !important;
+        margin-left: 0 !important;
+      }
+    }
+  }
+}

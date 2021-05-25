@@ -1,0 +1,19 @@
+<a class="nav-link" *ngIf="sideNavItem.link" [routerLink]="sideNavItem.link" routerLinkActive="active"
+    [ngClass]="{active: sideNavItem.isActive}">
+    <div class="app-nav-link-icon" *ngIf="sideNavItem.icon">
+        <fa-icon [icon]='["fas", sideNavItem.icon]'></fa-icon>
+    </div>
+</a>
+<a class="nav-link" *ngIf="!sideNavItem.link" [routerLink]="sideNavItem.link" (click)="sideNavItem.expanded = !sideNavItem.expanded"
+    [ngClass]="{active: sideNavItem.isActive, collapsed: !sideNavItem.expanded}">
+    <div class="app-nav-link-icon" *ngIf="sideNavItem.icon">
+        <fa-icon [icon]='["fas", sideNavItem.icon]'></fa-icon>
+    </div>
+    <div class="app-sidenav-collapse-arrow">
+        <fa-icon class="ms-auto" *ngIf="sideNavItem.submenu" [icon]="['fas', 'angle-down']"></fa-icon>
+    </div>
+</a>
+<nav class="app-sidenav-menu-nested nav" *ngIf="sideNavItem.submenu &amp;&amp; sideNavItem.expanded">
+    <app-side-nav-item-min class="submenu" *ngFor="let submenuItem of sideNavItem.submenu" [sideNavItem]="submenuItem">
+    </app-side-nav-item-min>
+</nav>

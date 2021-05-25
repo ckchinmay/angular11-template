@@ -1,0 +1,30 @@
+<app-head title="Create Post"></app-head>
+<div [hidden]="submitted" style="width: 400px;">
+    <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Title</label>
+            <input type="text" formControlName="title" class="form-control">
+            <div>
+                <span class="text-danger" *ngIf="!postForm.controls['title'].valid&&postForm.controls['title'].dirty">
+                    Title is required
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Body</label>
+            <textarea class="form-control" formControlName="body" rows="3" maxlength="50"></textarea>
+            <div>
+                <span class="text-danger" *ngIf="!postForm.controls['body'].valid&&postForm.controls['body'].dirty">
+                    Body is required
+                </span>
+            </div>
+        </div>
+
+        <button type="submit" [disabled]="!postForm.valid" class="btn btn-success">Submit</button>
+    </form>
+</div>
+
+<div [hidden]="!submitted">
+    <h4>You submitted successfully!</h4>
+</div>

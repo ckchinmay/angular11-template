@@ -1,0 +1,15 @@
+<nav class="app-sidenav accordion" id="sidenavAccordion" [ngClass]="sidenavStyle">
+    <div class="app-sidenav-menu">
+        <div class="nav">
+            <ng-container *ngFor="let section of sideNavSections">
+                <!-- <div class="app-sidenav-menu-heading" *ngIf="section.text">
+                    {{ section.text }}
+                </div> -->
+                <ng-container *ngFor="let item of section.items">
+                    <app-side-nav-item-min [sideNavItem]="sideNavItems[item]">
+                    </app-side-nav-item-min>
+                </ng-container>
+            </ng-container>
+        </div>
+    </div>
+</nav>
